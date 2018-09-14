@@ -10,7 +10,7 @@ Next we allocate cdev structure using kmalloc as it is shown in ldd3 book.
 When i was searching the linux source i found out that there is one API which will register a device if major number , baseminor and the number of minors given and also if we want our major number to be dynamically allocated then we can tell that api that our major number is '0'. If it recieves as zero it will dynamically allocates a major number . Apart from doing this it will also create a cdev, assign fops and owner attributes of the cdev automatically for us. So instead of doing multiple things its just a call to one API which will do all the above steps for us. 
 
 #### Note: I have taken the below comments from the linux source itself
-/**
+
  * __register_chrdev() - create and register a cdev occupying a range of minors
  * @major: major device number or 0 for dynamic allocation
  * @baseminor: first of the requested range of minor numbers
@@ -30,7 +30,7 @@ When i was searching the linux source i found out that there is one API which wi
  * /dev. It only helps to keep track of the different owners of devices. If
  * your module name has only one type of devices it's ok to use e.g. the name
  * of the module here.
- */
+
  
 #### int __register_chrdev(unsigned int major, unsigned int baseminor, unsigned int count, const char *name, 
  ####  const struct file_operations *fops);
