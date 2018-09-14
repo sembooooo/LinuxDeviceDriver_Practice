@@ -33,7 +33,7 @@ When i was searching the linux source i found out that there is one API which wi
  */
  
 #### int __register_chrdev(unsigned int major, unsigned int baseminor, unsigned int count, const char *name, 
-   const struct file_operations *fops);
+ ####  const struct file_operations *fops);
 
 #### My one extra comment on this api: this returns major number on success.
 
@@ -43,7 +43,6 @@ I am not sure whether we can use in this fashion or not but still comments are v
 Want to comment please write to srikarsana1995@gmail.com.
 
 So here comes some notes out of my experience now out of my mistakes.
-I read ldd3 book 
+I read ldd3 book before writing this 
 # underconstruction
-
 
