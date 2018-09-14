@@ -36,7 +36,7 @@ struct file_operations fops=
 static int drv_open(struct inode *inode ,struct file *filp)
 {
 	//lets do nothing here
-	printk("\n open method for major %d and minor %d",imajor(inode),iminor(inode));
+	printk(KERN_ALERT"\n open method for major %d and minor %d",imajor(inode),iminor(inode));
 	return 0;
 
 }
@@ -44,21 +44,21 @@ static int drv_open(struct inode *inode ,struct file *filp)
 static int drv_release( struct inode *inode, struct file *filp)
 {
 	//lets do nothing here
-	printk("\n release method for major %d and minor %d",imajor(inode),iminor(inode));
+	printk(KERN_ALERT"\n release method for major %d and minor %d",imajor(inode),iminor(inode));
 	return 0;
 }
 
 static ssize_t drv_read(struct file *file,char __user *buf ,size_t len,loff_t *off)
 {
 	//lets do nothing here
-	printk("\n read method");
+	printk(KERN_ALERT"\n read method");
 	return 0;
 }
 
 static ssize_t drv_write(struct file *file, const char *buf ,size_t len, loff_t *off)
 {
 	//lets do nothing here
-	printk("\n write  method");
+	printk(KERN_ALERT"\n write  method");
 	return 0;
 }
 
