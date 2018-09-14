@@ -127,14 +127,16 @@ static int __init drv_init(void)
         else
         {
             printk(KERN_EMERG"sr_Devicedriver sr_class creation is succesfully \n");
-        }
+            goto success;
+	}
         
 devcrt_failed:
     class_destroy(dev_class);
 cls_failed:
-    unregister_chrdev(MAJOR(dev),"sr_Devicedrv");
+    __unregister_chrdev(major,0,count,"sr_Devicedrv");	
 reg_failed:
 	printk(KERN_EMERG"sr_Devicedriver %d is the retval before init exits ",retval);
+success:
     return retval;
 }
 
@@ -146,7 +148,7 @@ static void __exit drv_exit(void)
     /* then destroy the class */
     class_destroy(dev_class);
     /*last ,unregister the device*/
-    unregister_chrdev_region(dev,count);
+    __unregister_chrdev(major,0,count,"sr_Devicedrv");
 }
 
 module_init(drv_init);
