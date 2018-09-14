@@ -43,6 +43,15 @@ I am not sure whether we can use in this fashion or not but still comments are v
 Want to comment please write to srikarsana1995@gmail.com.
 
 So here comes some notes out of my experience now out of my mistakes.
-I read ldd3 book before writing this 
-# underconstruction
+I read ldd3 book before writing this. So, normally, in the exit function we use unregister_chrdev_region() api to unregister the 
+device driver.
+But in this case this api wont work out.
+When registering ,normally according to the ldd3 book, we allocate memory to a cdev structure , assign the driver file_operations to it and then add the cdev to the system.
+The api __register_chrdev() will do the registering and cdev stuff for us. so if we use unregister_chrdev_region() it will be little difficult for us as we cannot free cdev allocated.
+
+So we have to be using __unregister_chrdev() which will make our life easy.
+If you wish to have a look at my code..... proceed.. (for now see only init and exit methods. the rest are under construction ).
+
+
+
 
