@@ -31,9 +31,9 @@ When i was searching the linux source i found out that there is one API which wi
  * your module name has only one type of devices it's ok to use e.g. the name
  * of the module here.
  */
-int __register_chrdev(unsigned int major, unsigned int baseminor,
-		      unsigned int count, const char *name,
-		      const struct file_operations *fops);
+ 
+#### int __register_chrdev(unsigned int major, unsigned int baseminor, unsigned int count, const char *name, 
+   const struct file_operations *fops);
 
 #### My one extra comment on this api: this returns major number on success.
 
